@@ -2,16 +2,16 @@ pipeline {
     agent none
 
     environment {
-        registry = "gdelgadoh/devops" 
+        registry = "johnsedo/proyecto_final_devops" 
         registryCredential = 'dockerhub'
         dockerImage = ''
         branchName = ''
         version = ''
 	}
-    options {
-        timestamps()
-        skipDefaultCheckout()      // Don't checkout automatically
-    }
+    //options {
+    //    timestamps()
+    //    skipDefaultCheckout()      // Don't checkout automatically
+    //}
 
     stages {
         stage('Checkout') {
@@ -24,7 +24,7 @@ pipeline {
             agent {
 		        docker {
 		            image 'maven:3-alpine' 
-		            args '-v /Users/gdelgadoh/.m2:/root/.m2' 
+		            args '-v /home/jpsedo/docker/.m2:/root/.m2' 
 		        }
     		}  
             steps {
@@ -38,10 +38,10 @@ pipeline {
                 sh 'mvn clean compile'
                 echo "Valor para sonar.branch.name: ${branchName}"
 
-                echo 'Cobertura'
-                sh 'mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -DfailIfNoTests=false' 
+                //echo 'Cobertura'
+                //sh 'mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -DfailIfNoTests=false' 
                 //jacoco execPattern: '**/target/**.exec'
-                junit '**/target/surefire-reports/*.xml'
+                //junit '**/target/surefire-reports/*.xml'
 
 
                 echo 'Quality Gate'                
