@@ -2,7 +2,7 @@ pipeline {
     agent none
 
     environment {
-        registry = "johnsedo/proyecto_final_devops" 
+        registry = "johnsedo/proyecto_final2" 
         registryCredential = 'dockerhub'
         dockerImage = ''
         branchName = ''
