@@ -54,7 +54,7 @@ pipeline {
 		       	}
 
                 echo 'Build'
-	       		sh 'mvn +X clean package -Dmaven.test.skip=true' 
+	       		sh 'mvn -X clean package -Dmaven.test.skip=true' 
             }
         }
         stage('Build Docker Image') { 
