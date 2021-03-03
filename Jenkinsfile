@@ -35,7 +35,7 @@ pipeline {
                     }
                  }
                 echo 'Compilar'
-                sh 'mvn -X clean compile'
+                sh 'mvn -X clean install -U'
                 echo "Valor para sonar.branch.name: ${branchName}"
 
                 //echo 'Cobertura'
